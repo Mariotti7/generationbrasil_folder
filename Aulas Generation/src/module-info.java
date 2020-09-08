@@ -1,0 +1,2 @@
+module Modulo_Java {
+}
