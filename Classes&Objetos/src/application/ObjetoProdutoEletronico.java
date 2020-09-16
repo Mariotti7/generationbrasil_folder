@@ -26,7 +26,7 @@ public class ObjetoProdutoEletronico {
 		
 		System.out.println();
 		ProdutoEletronico.mostra();
-		ProdutoEletronico.promocao(2000.00);
+		ProdutoEletronico.promocao(0);
 		
 		
 		

@@ -4,14 +4,12 @@ public class Funcionario {
 	//atributos
 	public static String nomeFuncionario;
 	public static String matriculaFuncionario;
-	
+	public static double salarioFuncionario;
+	public static double horaTrabalhada;
 	
 	
 	//metodos
-	
-	//atributo empresa - nao vou abrir outra classe
-	public static double salarioFuncionario;
-	public static double horaTrabalhada;
+
 	
 	public static void mostrar() {
 		System.out.println("\nFuncionario: " + Funcionario.nomeFuncionario.toUpperCase());
@@ -21,7 +19,7 @@ public class Funcionario {
 	}
 	
 	public static double horaTrabalho(double horaTrabalhada) {
-		return horaTrabalhada += horaTrabalhada;
+		return horaTrabalhada;
 	}
 	
 	public static double contaSalario(double horaTrabalho) {
