@@ -1,5 +1,7 @@
 package aplicacao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -12,24 +14,45 @@ public class Principal {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("INFORMAÇÕES FUNCIONÁRIOS");
+		int n;
+		char ch;
+		String nome;
+		int hora = 0;
+		double valorHora = 0;
+		double valorExtra = 0;
+
+		List<Funcionario> lista = new ArrayList<>();//Utilizando o List 
+
+		System.out.print("Digite o número de funcionários: ");
+		n = sc.nextInt();
+
+		for (int i = 1; i <= n; i++) {
+			System.out.print("Nome do funcionario " + i + ":");
+			System.out.print("Terceiro [S/N]");
+			ch = sc.next().toUpperCase().charAt(0);
+			System.out.print("Nome: ");
+			nome = sc.next();
+			System.out.print("Horas trabalhadas: ");
+			hora = sc.nextInt();
+			System.out.print("Valor da hora: ");
+			valorHora = sc.nextDouble();
+			if (ch == 'S') {
+				System.out.print("Digite o valor hora adicional: ");
+				valorExtra = sc.nextDouble();
+				lista.add(new Terceiro(nome, hora, valorHora, valorExtra));//adicionando os itens da lista
+			} else {
+
+				lista.add(new Funcionario(nome, hora, valorHora));
+
+			}
+
+		}
 		System.out.println();
+		System.out.println("PAGAMENTOS");
+		for (Funcionario func : lista) {//For each para listar as informações
+			System.out.println("Nome: " + func.getNome() + " | Pagamento: " + func.pagamento(hora, valorHora));
+		}
 
-		Funcionario funcionario = new Funcionario("Joao Silva");
-		Terceiro terceiro = new Terceiro("Maria Moreira", 0);
-
-		funcionario.setHorasTrabalhadas(40);
-		funcionario.setValorPorHora(60);
-		terceiro.setHorasTrabalhadas(40);
-		terceiro.setValorPorHora(60);
-		terceiro.setHorasAdicionais(2);
-
-		System.out.printf("Funcionário: %s%n", funcionario.getNome());
-		System.out.printf("Pagamento: R$ %.2f%n"
-				,funcionario.pagamento(funcionario.getHorasTrabalhadas(), funcionario.getValorPorHora()));
-		System.out.printf("\nFuncionário: %s%n", terceiro.getNome());
-		System.out.printf("Pagamento(com horas extras): R$ %.2f%n ",
-				terceiro.pagamento(terceiro.getHorasTrabalhadas(), terceiro.getValorPorHora()));
 		sc.close();
 
 	}
